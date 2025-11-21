@@ -131,7 +131,7 @@ const Header = () => {
 
           {/* Mobile Menu - Updated with absolute positioning */}
           {isMenuOpen && (
-            <div className="absolute top-full left-0 right-0 mt-2 md:hidden pb-6 pt-4 px-6 border-t border-border bg-card/95 backdrop-blur-lg rounded-2xl border-2 border-border shadow-elegant z-50 animate-fade-in">
+            <div className="absolute top-full left-0 right-0 mt-5 md:hidden pb-6 pt-4 px-6 border-t border-border bg-card/95 backdrop-blur-lg rounded-2xl border-2 border-border shadow-elegant z-50 animate-fade-in">
               <nav className="flex flex-col space-y-3">
                 {navLinks.map((link) => (
                   <button
@@ -152,7 +152,10 @@ const Header = () => {
               
               <div className="flex justify-center mt-6">
                 <button
-                  onClick={toggleDarkMode}
+                 onClick={() => {
+  toggleDarkMode();
+  setIsMenuOpen(!isMenuOpen);
+}}
                   className="rounded-full bg-card p-4 shadow-warm border border-border hover:scale-110 transition-transform"
                 >
                   <Sun className="h-7 w-7 text-yellow-500 dark:hidden" />
@@ -169,7 +172,7 @@ const Header = () => {
 // Hero Component
 const Hero = () => {
   return (
-       <section id="performances" className="relative w-full pt-24 pb-10 sm:pt-28 sm:pb-8 md:pt-32 md:pb-8">
+       <section id="performances" className="relative  animated-gold-bg w-full pt-24 pb-10 sm:pt-28 sm:pb-8 md:pt-32 md:pb-8">
       <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="relative w-full h-[500px] overflow-hidden rounded-3xl shadow-elegant">
           <img
@@ -262,7 +265,7 @@ const Atmosphere = () => {
   }, []);
 
   return (
-    <section id="events" className="py-16 md:py-24 bg-muted/30">
+    <section id="events" className="py-16 md:py-24  animated-gold-bg bg-muted/30">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:items-center">
           <div className="order-2 md:order-1">
@@ -462,7 +465,7 @@ const Testimonials = () => {
         {infiniteReviews.map((review, index) => (
           <div
             key={index}
-            className="testimonial-card flex-shrink-0 w-[350px] rounded-2xl border border-border p-3 shadow-warm hover:shadow-elegant transition-all duration-300 cursor-pointer"
+            className="testimonial-card flex-shrink-0 w-[350px] rounded-2xl border border-border border-orange-200 p-3 shadow-warm hover:shadow-elegant transition-all duration-300 cursor-pointer"
           >
             <div className="flex items-center space-x-1 mb-3">
               {[...Array(review.rating)].map((_, i) => (
@@ -659,7 +662,7 @@ const Offers = () => {
   ];
 
   return (
-    <section id="booking" className="py-16 md:py-24 bg-muted/30">
+    <section id="booking" className="py-16  animated-gold-bg md:py-24 bg-muted/30">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-center font-serif text-4xl font-bold text-foreground md:text-5xl mb-12">
           Performance Packages
@@ -690,13 +693,13 @@ const Offers = () => {
 const Newsletter = () => {
   return (
     <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-accent/10 to-background">
-      <div className="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <div data-aos="flip-left" data-aos-easing="ease-out-cubic" className="container  mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-card/80 backdrop-blur-sm p-8 md:p-12 shadow-elegant text-center">
           <Mail className="h-12 w-12 text-primary mx-auto mb-6" />
           <h2 className="font-serif text-3xl font-bold text-foreground md:text-4xl mb-4">
             Get in Touch
           </h2>
-          <p className="text-muted-foreground mb-8 max-w-md mx-auto">
+          <p className="text-muted-foreground text-sm mb-8 max-w-md mx-auto">
             Planning your special day? Contact Sri Jagan to discuss your event requirements and get a customized performance package.
           </p>
           <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
@@ -744,7 +747,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section className="py-16  animated-gold-bg md:py-24 bg-background">
       <div className="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-center font-serif text-4xl font-bold text-foreground md:text-5xl mb-12">
           Frequently Asked Questions
@@ -902,9 +905,9 @@ const Gallery = () => {
 // Footer Component
 const Footer = () => {
   return (
-    <footer className="bg-secondary text-secondary-foreground py-12 md:py-16">
+    <footer className="bg-secondary text-secondary-foreground py-4 md:py-16">
       <div className="container mx-auto max-w-7xl px-7 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <Music className="h-8 w-8 text-primary" />
@@ -956,7 +959,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-secondary-foreground/20 pt-8">
+        <div className="border-t border-secondary-foreground/20 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-secondary-foreground/60">
               © 2024 Sri Jagan. All rights reserved.
@@ -998,7 +1001,7 @@ const BackToTopButton = () => {
   );
 };
 // Main App
-// Main App
+// Main App with internal CSS and GoldBackground component
 export default function Index() {
   useEffect(() => {
     AOS.init({
@@ -1014,23 +1017,27 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background font-sans text-foreground overflow-x-hidden">
-      <Header />
-      <main className="overflow-x-hidden">
-        {/* Enhanced AOS animations with more attractive effects */}
-        <div data-aos="fade-down" data-aos-delay="100"><Hero /></div>
-        <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500"><Intro /></div>
-        <div data-aos="zoom-in" data-aos-delay="300" data-aos-easing="ease-out-back"><Atmosphere /></div>
-        <div data-aos="flip-up" data-aos-delay="400"><Nutshell /></div>
-        <div data-aos="fade-left" data-aos-delay="500"><Testimonials /></div>
-        <div data-aos="fade-right" data-aos-delay="600"><Offers /></div>
-        <div data-aos="zoom-out" data-aos-delay="700"><Partners /></div>
-        <div data-aos="flip-left" data-aos-delay="800" data-aos-easing="ease-out-cubic"><Newsletter /></div>
-        <div data-aos="fade-up" data-aos-delay="900"><FAQ /></div>
-        <div data-aos="zoom-in-up" data-aos-delay="1000"><Gallery /></div>
-      </main>
-      <Footer />
-      <BackToTopButton />
-    </div>
+    <>
+      <div className="min-h-screen font-sans text-foreground overflow-x-hidden">
+        <div className="content-wrapper">
+          <Header />
+          <main className="overflow-x-hidden">
+            {/* Enhanced AOS animations with more attractive effects */}
+            <div data-aos="fade-down" data-aos-delay="100"><Hero /></div>
+            <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500"><Intro /></div>
+            <div data-aos="zoom-in" data-aos-delay="300" data-aos-easing="ease-out-back"><Atmosphere /></div>
+            <div data-aos="flip-up" data-aos-delay="400"><Nutshell /></div>
+            <div data-aos="fade-left" data-aos-delay="500"><Testimonials /></div>
+            <div data-aos="fade-right" data-aos-delay="600"><Offers /></div>
+            <div data-aos="zoom-out" data-aos-delay="700"><Partners /></div>
+            <div ><Newsletter /></div>
+            <div data-aos="fade-up" data-aos-delay="900"><FAQ /></div>
+            <div data-aos="zoom-in-up" data-aos-delay="1000"><Gallery /></div>
+          </main>
+          <Footer />
+          <BackToTopButton />
+        </div>
+      </div>
+    </>
   );
 }
