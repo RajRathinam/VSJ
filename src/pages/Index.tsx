@@ -2,8 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import {
-  Globe, ChevronDown, Star, ChevronLeft, ChevronRight,Sparkles ,
-  Instagram, Facebook, Youtube, Menu, X, ChevronUp, Mail, Music, Sun, Moon
+  Globe, ChevronDown, Star, ChevronLeft, ChevronRight, Sparkles,
+  Instagram, Facebook, Youtube, Menu, X, ChevronUp, Mail, Music, Sun, Moon,
+  Heart, Users, Calendar, Clock, MapPin, Phone, MessageCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -25,9 +26,11 @@ import gallery4 from '@/assets/gallery-4.jpg';
 // SVG Icons
 const SpotifyIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
-    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.5 14.5c-.2.3-.6.4-.9.2-2.5-1.5-5.6-1.8-9.3-1-.4.1-.7-.2-.8-.5-.1-.4.2-.7.5-.8 4-.9 7.5-.5 10.3 1.2.3.2.4.6.2.9zm1.3-2.9c-.2.4-.7.5-1.1.3-2.8-1.7-7.1-2.2-10.4-1.2-.4.1-.9-.1-1-.5-.1-.4.1-.9.5-1 3.8-1.1 8.6-.6 11.7 1.3.4.2.5.7.3 1.1zm.1-3c-3.4-2-9-2.2-12.2-1.2-.5.2-1-.1-1.2-.6-.2-.5.1-1 .6-1.2 3.7-1.1 10.1-.9 14 1.4.4.2.6.8.3 1.3-.2.4-.8.5-1.3.3z" />
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
   </svg>
 );
+
+// ... (Header, Hero, Intro, Atmosphere, Nutshell, Testimonials components remain the same) ...
 
 const TikTokIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6">
@@ -336,6 +339,7 @@ const Atmosphere = () => {
 };
 
 // Nutshell Component
+// Nutshell Component
 const Nutshell = () => {
   return (
     <section className="py-20 md:py-32 bg-gradient-to-b from-background to-muted/30">
@@ -346,7 +350,50 @@ const Nutshell = () => {
         <div className="mt-8 flex justify-center">
           <div className="h-1 w-24 rounded-full bg-gradient-to-r from-primary to-accent"></div>
         </div>
+        
+        {/* Image with clip-path effect and text overlay */}
+        <div className="mt-12 flex justify-center">
+          <div className="relative w-full max-w-2xl">
+            <div className="clip-path-hexagon overflow-hidden rounded-lg shadow-2xl relative group">
+              <img 
+                src={gallery2}
+                alt="Sri Jagan performing violin at an event"
+                className="w-full h-auto object-cover transition-all duration-500 group-hover:scale-110"
+              />
+              
+              {/* Text overlay - Fixed positioning */}
+              <div className="absolute inset-0 flex flex-col justify-end items-end">
+            <div className="relative bg-white/15 backdrop-blur-xl border border-white/30 text-white p-3 md:p-6 rounded-tl-2xl rounded-br-2xl shadow-2xl transform transition-transform duration-300 group-hover:scale-105 overflow-hidden">
+  {/* Shine effect overlay */}
+  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+  
+  <div className="relative z-10 text-center">
+    <div className="font-bold text-md md:text-6xl lg:text-7xl mb-1 md:mb-2 drop-shadow-2xl">6+</div>
+    <div className="text-sm md:text-xl lg:text-2xl font-semibold tracking-wider drop-shadow">Years Of</div>
+    <div className="text-sm md:text-xl lg:text-2xl font-semibold tracking-wider drop-shadow">Experience</div>
+  </div>
+</div>
+              </div>
+            </div>
+            
+            {/* Optional decorative border effect */}
+            <div className="absolute -inset-2 clip-path-hexagon bg-gradient-to-r from-primary to-accent -z-10 opacity-20 blur-sm"></div>
+          </div>
+        </div>
       </div>
+
+      {/* Add custom styles for clip-path */}
+      <style>{`
+        .clip-path-hexagon {
+          clip-path: inset(0% 0% 0% 0% round 0% 20% 0% 20%);
+        }
+        
+        @media (min-width: 768px) {
+          .clip-path-hexagon {
+            clip-path: inset(0% 0% 0% 0% round 15% 0% 15% 0%);
+          }
+        }
+      `}</style>
     </section>
   );
 };
@@ -594,11 +641,11 @@ const Partners = () => {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/40 mb-4">
-              <Sparkles className="w-4 h-4 text-primary sparkle-icon" />
+              <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-primary uppercase tracking-wider">
                 Trusted by the Finest
               </span>
-              <Sparkles className="w-4 h-4 text-primary sparkle-icon" style={{ animationDelay: '1.5s' }} />
+              <Sparkles className="w-4 h-4 text-primary" style={{ animationDelay: '1.5s' }} />
             </div>
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-3">
               Performed at Prestigious Venues
@@ -638,88 +685,10 @@ const Partners = () => {
 
 
 
-// Offers Component
-const Offers = () => {
-  const offers = [
-    {
-      title: 'Wedding Ceremonies',
-      description: 'Make your wedding day unforgettable with soulful violin melodies during the ceremony, entry, and special moments.',
-      icon: '💍',
-      cta: 'Learn More',
-    },
-    {
-      title: 'Engagement Events',
-      description: 'Create a romantic atmosphere for your engagement with beautiful violin performances tailored to your love story.',
-      icon: '💕',
-      cta: 'View Packages',
-    },
-    {
-      title: 'Reception Parties',
-      description: 'Elevate your reception with elegant violin music that complements the celebration and entertains your guests.',
-      icon: '🎉',
-      cta: 'Book Now',
-    },
-  ];
-
-  return (
-    <section id="booking" className="py-16  animated-gold-bg md:py-24 bg-muted/30">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-center font-serif text-4xl font-bold text-foreground md:text-5xl mb-12">
-          Performance Packages
-        </h2>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          {offers.map((offer, index) => (
-            <div
-              key={index}
-              className="group rounded-3xl border border-border bg-card p-8 shadow-warm hover:shadow-elegant transition-all hover:-translate-y-2 hover:scale-105"
-            >
-              {/* <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform">{offer.icon}</div> */}
-              <h3 className="font-serif text-2xl font-bold text-foreground mb-3">{offer.title}</h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">{offer.description}</p>
-              <Button className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90 group-hover:bg-primary group-hover:text-primary-foreground transition-colors hover:scale-105">
-                {offer.cta}
-              </Button>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
 
 
 
-// Newsletter Component
-const Newsletter = () => {
-  return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-accent/10 to-background">
-      <div data-aos="flip-left" data-aos-easing="ease-out-cubic" className="container  mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-3xl bg-card/80 backdrop-blur-sm p-8 md:p-12 shadow-elegant text-center">
-          <Mail className="h-12 w-12 text-primary mx-auto mb-6" />
-          <h2 className="font-serif text-3xl font-bold text-foreground md:text-4xl mb-4">
-            Get in Touch
-          </h2>
-          <p className="text-muted-foreground text-sm mb-8 max-w-md mx-auto">
-            Planning your special day? Contact Sri Jagan to discuss your event requirements and get a customized performance package.
-          </p>
-          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 bg-background border-border"
-            />
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-warm hover:scale-105 transition-transform">
-              Contact Now
-            </Button>
-          </form>
-          <p className="text-xs text-muted-foreground mt-4">
-            Quick response within 24 hours. Free consultation available.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-};
+
 
 // FAQ Component
 const FAQ = () => {
@@ -902,78 +871,7 @@ const Gallery = () => {
   );
 };
 
-// Footer Component
-const Footer = () => {
-  return (
-    <footer className="bg-secondary text-secondary-foreground py-4 md:py-16">
-      <div className="container mx-auto max-w-7xl px-7 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-          <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <Music className="h-8 w-8 text-primary" />
-              <span className="font-serif text-xl font-bold">Sri Jagan</span>
-            </div>
-            <p className="text-sm text-secondary-foreground/70 leading-relaxed">
-              Professional violinist creating memorable experiences for weddings, engagements, receptions, and special ceremonies.
-            </p>
-          </div>
 
-<div className="flex justify-between">
-            <div>
-            <h3 className="font-semibold mb-4">Services</h3>
-            <ul className="space-y-2 text-sm text-secondary-foreground/70">
-              <li><a href="#" className="hover:text-primary transition-colors">Wedding Ceremonies</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Engagements</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Receptions</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Special Events</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-sm text-secondary-foreground/70">
-              <li><a href="#about" className="hover:text-primary transition-colors">About</a></li>
-              <li><a href="#gallery" className="hover:text-primary transition-colors">Gallery</a></li>
-              <li><a href="#booking" className="hover:text-primary transition-colors">Book Now</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
-            </ul>
-          </div>
-</div>
-
-          <div>
-            <h3 className="font-semibold mb-4">Connect</h3>
-            <div className="flex space-x-4">
-              <a href="#" className="text-secondary-foreground/70 hover:text-primary transition-colors hover:scale-110">
-                <Instagram className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-secondary-foreground/70 hover:text-primary transition-colors hover:scale-110">
-                <Facebook className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-secondary-foreground/70 hover:text-primary transition-colors hover:scale-110">
-                <Youtube className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-secondary-foreground/70 hover:text-primary transition-colors hover:scale-110">
-                <SpotifyIcon />
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-secondary-foreground/20 pt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm text-secondary-foreground/60">
-              © 2024 Sri Jagan. All rights reserved.
-            </p>
-            <div className="flex space-x-6 text-sm text-secondary-foreground/60">
-              <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-};
 // Back to Top Button
 // Back to Top Button
 const BackToTopButton = () => {
@@ -1000,8 +898,298 @@ const BackToTopButton = () => {
     </button>
   );
 };
+
+// Offers Component - Refined and Minimal
+// Offers Component - Premium Version
+const Offers = () => {
+  const offers = [
+    {
+      title: 'Wedding Ceremonies',
+      description: 'Soulful violin melodies for your ceremony, entry, and special moments.',
+      icon: Heart,
+      duration: '2-4 hours',
+      price: '₹25,000',
+      cta: 'Learn More',
+      featured: true,
+    },
+    {
+      title: 'Engagement Events',
+      description: 'Romantic violin performances tailored to your love story.',
+      icon: Users,
+      duration: '1-2 hours',
+      price: '₹15,000',
+      cta: 'View Packages',
+      featured: false,
+    },
+    {
+      title: 'Reception Parties',
+      description: 'Elegant violin music to complement your celebration.',
+      icon: Calendar,
+      duration: '3-5 hours',
+      price: '₹30,000',
+      cta: 'Book Now',
+      featured: false,
+    },
+  ];
+
+  return (
+    <section id="booking" className="py-16 animated-gold-bg md:py-24 bg-muted/30">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="font-serif text-4xl font-bold text-foreground md:text-5xl mb-4">
+            Performance Packages
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Tailored violin experiences for your most cherished moments
+          </p>
+        </div>
+        
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {offers.map((offer, index) => {
+            const IconComponent = offer.icon;
+            return (
+              <div
+                key={index}
+                className={`group relative overflow-hidden rounded-2xl border border-border border-orange-200/50 p-6 shadow-warm hover:shadow-elegant transition-all duration-300 cursor-pointer ${
+                  offer.featured 
+                    ? 'ring-2 ring-primary/20 scale-105' 
+                    : 'hover:scale-105'
+                }`}
+                data-aos="fade-up"
+                data-aos-delay={index * 150}
+              >
+                {/* Featured Badge */}
+                {offer.featured && (
+                  <div className="absolute top-3 right-3 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
+                    Most Popular
+                  </div>
+                )}
+
+                {/* Icon */}
+                <div className="mb-4 flex justify-center">
+                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl transition-all duration-300 ${
+                    offer.featured 
+                      ? 'bg-primary text-primary-foreground shadow-lg' 
+                      : 'bg-primary/10 text-primary group-hover:bg-primary/20'
+                  }`}>
+                    <IconComponent className="h-6 w-6" />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="text-center mb-4">
+                  <h3 className={`font-serif text-xl font-bold mb-2 ${
+                    offer.featured ? 'text-primary' : 'text-foreground'
+                  }`}>
+                    {offer.title}
+                  </h3>
+                  
+                  <p className="text-foreground/80 leading-relaxed text-sm mb-3 h-12">
+                    {offer.description}
+                  </p>
+
+                  {/* Duration */}
+                  <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground mb-3">
+                    <Clock className="h-3 w-3" />
+                    <span>{offer.duration}</span>
+                  </div>
+                </div>
+
+                {/* Price */}
+                <div className="text-center mb-4">
+                  <p className={`text-xl font-bold ${
+                    offer.featured ? 'text-primary' : 'text-foreground'
+                  }`}>
+                    {offer.price}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">starting price</p>
+                </div>
+
+                {/* CTA Button */}
+                <Button className={`w-full transition-all duration-300 text-sm ${
+                  offer.featured
+                    ? 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg'
+                    : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                }`}>
+                  {offer.cta}
+                </Button>
+
+                {/* Premium Hover Effects */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Custom Package CTA - Premium */}
+        <div className="mt-12 text-center" data-aos="fade-up" data-aos-delay="300">
+          <div className="inline-flex items-center gap-4 p-5 rounded-2xl bg-card/80 backdrop-blur-sm border border-border border-orange-200/30 shadow-warm hover:shadow-elegant transition-all duration-300 cursor-pointer max-w-md mx-auto">
+            <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary">
+              <MessageCircle className="h-5 w-5" />
+            </div>
+            <div className="text-left flex-1">
+              <h4 className="font-semibold text-foreground text-sm">Custom Package?</h4>
+              <p className="text-xs text-muted-foreground">Let's create something unique</p>
+            </div>
+            <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-xs">
+              <Phone className="h-3 w-3 mr-1" />
+              Discuss
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Add premium styling */}
+      <style >{`
+        .animated-gold-bg {
+          background: linear-gradient(
+            135deg,
+            hsl(var(--background)) 0%,
+            rgba(251, 191, 36, 0.03) 50%,
+            hsl(var(--background)) 100%
+          );
+          background-size: 200% 200%;
+          animation: goldenShimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes goldenShimmer {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+      `}</style>
+    </section>
+  );
+};
+// Newsletter Component with Lucide icons
+const Newsletter = () => {
+  return (
+    <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 via-accent/10 to-background">
+      <div data-aos="flip-left" data-aos-easing="ease-out-cubic" className="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl bg-card/80 backdrop-blur-sm p-8 md:p-12 shadow-elegant text-center">
+          <Mail className="h-12 w-12 text-primary mx-auto mb-6" />
+          <h2 className="font-serif text-3xl font-bold text-foreground md:text-4xl mb-4">
+            Get in Touch
+          </h2>
+          <p className="text-muted-foreground text-sm mb-8 max-w-md mx-auto">
+            Planning your special day? Contact Sri Jagan to discuss your event requirements and get a customized performance package.
+          </p>
+          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <Input
+              type="email"
+              placeholder="Enter your email"
+              className="flex-1 bg-background border-border"
+            />
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-warm hover:scale-105 transition-transform">
+              <Mail className="h-4 w-4 mr-2" />
+              Contact Now
+            </Button>
+          </form>
+          <p className="text-xs text-muted-foreground mt-4">
+            <Clock className="h-3 w-3 inline mr-1" />
+            Quick response within 24 hours. Free consultation available.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Footer Component with Lucide icons
+const Footer = () => {
+  return (
+    <footer className="bg-secondary text-secondary-foreground py-4 md:py-16">
+      <div className="container mx-auto max-w-7xl px-7 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+          <div>
+            <div className="flex items-center space-x-2 mb-4">
+              <Music className="h-8 w-8 text-primary" />
+              <span className="font-serif text-xl font-bold">Sri Jagan</span>
+            </div>
+            <p className="text-sm text-secondary-foreground/70 leading-relaxed">
+              Professional violinist creating memorable experiences for weddings, engagements, receptions, and special ceremonies.
+            </p>
+          </div>
+
+          <div className="flex justify-between">
+            <div>
+              <h3 className="font-semibold mb-4 flex items-center gap-2">
+                <Heart className="h-4 w-4" />
+                Services
+              </h3>
+              <ul className="space-y-2 text-sm text-secondary-foreground/70">
+                <li><a href="#" className="hover:text-primary transition-colors flex items-center gap-2"><span>•</span> Wedding Ceremonies</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors flex items-center gap-2"><span>•</span> Engagements</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors flex items-center gap-2"><span>•</span> Receptions</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors flex items-center gap-2"><span>•</span> Special Events</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4 flex items-center gap-2">
+                <MapPin className="h-4 w-4" />
+                Quick Links
+              </h3>
+              <ul className="space-y-2 text-sm text-secondary-foreground/70">
+                <li><a href="#about" className="hover:text-primary transition-colors flex items-center gap-2"><span>•</span> About</a></li>
+                <li><a href="#gallery" className="hover:text-primary transition-colors flex items-center gap-2"><span>•</span> Gallery</a></li>
+                <li><a href="#booking" className="hover:text-primary transition-colors flex items-center gap-2"><span>•</span> Book Now</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors flex items-center gap-2"><span>•</span> Contact</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-4 flex items-center gap-2">
+              <Users className="h-4 w-4" />
+              Connect
+            </h3>
+            <div className="flex space-x-4">
+              <a href="#" className="text-secondary-foreground/70 hover:text-primary transition-colors hover:scale-110 p-2 rounded-full bg-secondary-foreground/10 hover:bg-primary/20">
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-secondary-foreground/70 hover:text-primary transition-colors hover:scale-110 p-2 rounded-full bg-secondary-foreground/10 hover:bg-primary/20">
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-secondary-foreground/70 hover:text-primary transition-colors hover:scale-110 p-2 rounded-full bg-secondary-foreground/10 hover:bg-primary/20">
+                <Youtube className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-secondary-foreground/70 hover:text-primary transition-colors hover:scale-110 p-2 rounded-full bg-secondary-foreground/10 hover:bg-primary/20">
+                <SpotifyIcon />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-secondary-foreground/20 pt-6">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-sm text-secondary-foreground/60 flex items-center gap-2">
+              <Calendar className="h-4 w-4" />
+              © 2024 Sri Jagan. All rights reserved.
+            </p>
+            <div className="flex space-x-6 text-sm text-secondary-foreground/60">
+              <a href="#" className="hover:text-primary transition-colors flex items-center gap-1">
+                <span>Privacy Policy</span>
+              </a>
+              <a href="#" className="hover:text-primary transition-colors flex items-center gap-1">
+                <span>Terms of Service</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// ... (BackToTopButton and Main App components remain the same) ...
+
 // Main App
-// Main App with internal CSS and GoldBackground component
 export default function Index() {
   useEffect(() => {
     AOS.init({
@@ -1012,7 +1200,6 @@ export default function Index() {
       mirror: false,
     });
     
-    // Refresh AOS after a short delay to ensure all elements are rendered
     setTimeout(() => AOS.refresh(), 300);
   }, []);
 
@@ -1022,15 +1209,14 @@ export default function Index() {
         <div className="content-wrapper">
           <Header />
           <main className="overflow-x-hidden">
-            {/* Enhanced AOS animations with more attractive effects */}
             <div data-aos="fade-down" data-aos-delay="100"><Hero /></div>
             <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500"><Intro /></div>
             <div data-aos="zoom-in" data-aos-delay="300" data-aos-easing="ease-out-back"><Atmosphere /></div>
             <div data-aos="flip-up" data-aos-delay="400"><Nutshell /></div>
             <div data-aos="fade-left" data-aos-delay="500"><Testimonials /></div>
-            <div data-aos="fade-right" data-aos-delay="600"><Offers /></div>
-            <div data-aos="zoom-out" data-aos-delay="700"><Partners /></div>
-            <div ><Newsletter /></div>
+            <div data-aos="fade-up" data-aos-delay="600"><Offers /></div>
+            <div data-aos="fade-right" data-aos-delay="700"><Partners /></div>
+            <div><Newsletter /></div>
             <div data-aos="fade-up" data-aos-delay="900"><FAQ /></div>
             <div data-aos="zoom-in-up" data-aos-delay="1000"><Gallery /></div>
           </main>
