@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -42,10 +42,10 @@ const Header = () => {
   };
 
   const navLinks = [
-    { name: 'Home', href: '/', type: 'route' },
+    { name: 'Home', href: '#home', type: 'section' },
     { name: 'About', href: '#about', type: 'section' },
     { name: 'Performances', href: '#performances', type: 'section' },
-    { name: 'Gallery', href: '#gallery', type: 'section' },
+    // { name: 'Gallery', href: '#gallery', type: 'section' },
     // { name: 'Contact', href: '#contact', type: 'section' },
     { name: 'Journey', href: '/journey', type: 'route' },
     { name: 'Awards', href: '/awards', type: 'route' },
@@ -91,10 +91,10 @@ const Header = () => {
             ? 'border-primary/20 bg-card/95 backdrop-blur-lg shadow-elegant' 
             : 'border-border bg-background/80 backdrop-blur-sm'
         }`}>
-          <div className="flex h-16 items-center justify-between md:h-20 px-6">
+          <div className="flex h-14 items-center justify-between md:h-16 px-6">
             <div className="flex items-center space-x-2">
               <Music className="h-8 w-8 text-primary" />
-              <span className="font-serif text-xl font-bold text-foreground md:text-2xl">G. Sri Jagan</span>
+              <span className="font-serif text-xl font-bold text-foreground md:text-2xl">Sri Jagan</span>
             </div>
 
             <nav className="hidden items-center space-x-8 md:flex">
@@ -102,7 +102,7 @@ const Header = () => {
                 <button
                   key={link.name}
                   onClick={() => handleNavigation(link.href, link.type)}
-                  className="text-sm font-medium text-foreground transition-all hover:text-primary hover:scale-105"
+                  className="text-xs font-medium text-foreground transition-all hover:text-primary hover:scale-105"
                 >
                   {link.name}
                 </button>
@@ -137,13 +137,13 @@ const Header = () => {
           </div>
 
           {isMenuOpen && (
-            <div className="absolute top-full left-0 right-0 mt-5 md:hidden pb-6 pt-4 px-6 border-t border-border bg-card/95 backdrop-blur-lg rounded-2xl border-2 border-border shadow-elegant z-50 animate-fade-in">
-              <nav className="flex flex-col space-y-3">
+            <div className="absolute top-full left-0 right-0 mt-7 md:hidden pb-6 pt-4 px-6 bg-card/95 backdrop-blur-lg rounded-2xl border-2 border-border shadow-elegant z-50 animate-fade-in">
+              <nav className="flex flex-col">
                 {navLinks.map((link) => (
                   <button
                     key={link.name}
                     onClick={() => handleNavigation(link.href, link.type)}
-                    className="rounded-xl px-4 py-3 text-sm font-medium text-foreground hover:bg-muted transition-all hover:scale-105 text-left"
+                    className="rounded-xl px-4 py-3 text-xs font-medium text-foreground hover:bg-muted transition-all hover:scale-105 text-left"
                   >
                     {link.name}
                   </button>
@@ -180,9 +180,9 @@ const Hero = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="home" className="relative animated-gold-bg w-full pt-28 pb-14 sm:pt-28 sm:pb-8 md:pt-32 md:pb-8">
-      <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
-        <div className="relative w-full h-[500px] overflow-hidden rounded-3xl shadow-elegant">
+    <section id="home" className="relative animated-gold-bg w-full pt-24 pb-10 sm:pt-28 sm:pb-8 md:pt-32 md:pb-8">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative w-full h-[500px] overflow-hidden rounded-2xl shadow-elegant">
           <img
             src={heroImage1}
             alt="G. Sri Jagan performing violin"
@@ -241,16 +241,16 @@ const About = () => {
             <h2 className="font-serif text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
               About 
             </h2>
-            <p className="mt-6 text-justify text-base text-foreground/80 leading-relaxed">
+            <p className="mt-6 text-sm text-justify text-base text-foreground/80 leading-relaxed">
               I am G. Sri Jagan, a passionate violinist and nadaswaram artist, currently pursuing B.E. in Computer Science Engineering. Music has been the core of my identity from a very young age.
             </p>
-            <p className="mt-4 text-base text-justify text-muted-foreground leading-relaxed">
+            <p className="mt-4 text-sm text-base text-justify text-muted-foreground leading-relaxed">
               I began learning violin at age 8 under Karaikal Suka Pavalan. By age 10, I started performing live and have since completed over <strong className="text-primary">10,000+ successful concerts</strong> in just 11 years. My nadaswaram journey began under my father, Nadaswaram S. Govindan, with constant support from my mother, G. Sudha.
             </p>
-            <div className="mt-6 mx-2.5 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
-              <Star className="w-5 h-5 text-primary fill-primary" />
-              <span className="text-primary text-sm font-semibold">Nadha Kala Nithi | 18 Golden Awards</span>
-              <Star className="w-5 h-5 text-primary fill-primary" />
+            <div className="mt-6 mx-3 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
+              <Star className="w-3 h-3 text-primary fill-primary" />
+              <span className="text-primary text-xs font-semibold">Nadha Kala Nithi | 18 Golden Awards</span>
+              <Star className="w-3 h-3 text-primary fill-primary" />
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button 
@@ -292,100 +292,218 @@ const About = () => {
 // Journey Component
 const Journey = () => {
   return (
-    <section className="py-16 md:py-24 animated-gold-bg bg-muted/30">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="py-16 md:py-24 journey-animated-bg relative overflow-hidden">
+      {/* Background square elements */}
+      <div className="absolute top-10 left-10 w-20 h-20 bg-primary/5 rounded-2xl blur-xl"></div>
+      <div className="absolute bottom-10 right-10 w-24 h-24 bg-primary/5 rounded-2xl blur-xl"></div>
+      <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-primary/3 rounded-xl blur-lg"></div>
+      <div className="absolute bottom-1/3 right-1/4 w-12 h-12 bg-primary/4 rounded-lg blur-md"></div>
+      
+      {/* Animated floating squares */}
+      <div className="absolute top-20 right-20 w-8 h-8 border-2 border-primary/20 rounded-lg animate-pulse"></div>
+      <div className="absolute bottom-20 left-20 w-6 h-6 border-2 border-primary/15 rounded-lg animate-pulse delay-1000"></div>
+      <div className="absolute top-1/3 right-1/4 w-4 h-4 bg-primary/10 rounded-sm animate-bounce"></div>
+      <div className="absolute bottom-1/4 left-1/3 w-3 h-3 bg-primary/15 rounded-sm animate-ping"></div>
+
+      {/* Large background squares */}
+      <div className="absolute -top-20 -left-20 w-40 h-40 bg-primary/3 rounded-3xl blur-2xl"></div>
+      <div className="absolute -bottom-20 -right-20 w-48 h-48 bg-primary/2 rounded-3xl blur-2xl"></div>
+
+      {/* Content wrapper with higher z-index */}
+      <div className="journey-content container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <h2 className="text-center font-serif text-4xl font-bold text-foreground md:text-5xl mb-12">
           My Musical Journey
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <div className="bg-card rounded-2xl p-6 shadow-warm border border-border hover:scale-105 transition-transform">
-            <div className="flex items-start gap-4">
-              <div className="bg-primary/10 p-3 rounded-xl">
+          <div className="bg-gradient-to-br from-card to-primary/5 rounded-2xl p-6 border border-primary/20  hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+            {/* Card square accents */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500 rounded-bl-2xl"></div>
+            <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-primary/5 to-transparent opacity-40 group-hover:opacity-70 transition-opacity duration-500 rounded-tr-2xl"></div>
+            
+            <div className="flex items-start gap-4 relative z-10">
+              <div className="bg-primary/15 p-3 rounded-xl backdrop-blur-sm border border-primary/20">
                 <Music className="w-6 h-6 text-primary" />
               </div>
               <div>
                 <h3 className="font-serif text-xl font-bold text-foreground mb-2">Violin Training</h3>
-                <p className="text-muted-foreground text-sm">Started at age 8 under Karaikal Suka Pavalan. Trained for 2 years before beginning live performances at age 10.</p>
+                <p className="text-muted-foreground text-xs text-justify">Started at age 8 under Karaikal Suka Pavalan. Trained for 2 years before beginning live performances at age 10.</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-card rounded-2xl p-6 shadow-warm border border-border hover:scale-105 transition-transform">
-            <div className="flex items-start gap-4">
-              <div className="bg-primary/10 p-3 rounded-xl">
+          <div className="bg-gradient-to-br from-card to-primary/5 rounded-2xl p-6 border border-primary/20  hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+            {/* Card square accents */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500 rounded-bl-2xl"></div>
+            <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-primary/5 to-transparent opacity-40 group-hover:opacity-70 transition-opacity duration-500 rounded-tr-2xl"></div>
+            
+            <div className="flex items-start gap-4 relative z-10">
+              <div className="bg-primary/15 p-3 rounded-xl backdrop-blur-sm border border-primary/20">
                 <Users className="w-6 h-6 text-primary" />
               </div>
               <div>
                 <h3 className="font-serif text-xl font-bold text-foreground mb-2">Nadaswaram</h3>
-                <p className="text-muted-foreground text-sm">Learned from my father, Nadaswaram S. Govindan. My mother, G. Sudha, has been my constant pillar of support.</p>
+                <p className="text-muted-foreground text-xs text-justify">Learned from my father, Nadaswaram S. Govindan. My mother, G. Sudha, has been my constant pillar of support.</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-card rounded-2xl p-6 shadow-warm border border-border hover:scale-105 transition-transform">
-            <div className="flex items-start gap-4">
-              <div className="bg-primary/10 p-3 rounded-xl">
+          <div className="bg-gradient-to-br from-card to-primary/5 rounded-2xl p-6 border border-primary/20 hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+            {/* Card square accents */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500 rounded-bl-2xl"></div>
+            <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-primary/5 to-transparent opacity-40 group-hover:opacity-70 transition-opacity duration-500 rounded-tr-2xl"></div>
+            
+            <div className="flex items-start gap-4 relative z-10">
+              <div className="bg-primary/15 p-3 rounded-xl backdrop-blur-sm border border-primary/20">
                 <Trophy className="w-6 h-6 text-primary" />
               </div>
               <div>
                 <h3 className="font-serif text-xl font-bold text-foreground mb-2">Recognition</h3>
-                <p className="text-muted-foreground text-sm">Honored with 18 Golden Awards and the title "Nadha Kala Nithi" for dedication and excellence in music.</p>
+                <p className="text-muted-foreground text-xs text-justify">Honored with 18 Golden Awards and the title "Nadha Kala Nithi" for dedication and excellence in music.</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-card rounded-2xl p-6 shadow-warm border border-border hover:scale-105 transition-transform">
-            <div className="flex items-start gap-4">
-              <div className="bg-primary/10 p-3 rounded-xl">
+          <div className="bg-gradient-to-br from-card to-primary/5 rounded-2xl p-6 border border-primary/20  hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+            {/* Card square accents */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500 rounded-bl-2xl"></div>
+            <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-primary/5 to-transparent opacity-40 group-hover:opacity-70 transition-opacity duration-500 rounded-tr-2xl"></div>
+            
+            <div className="flex items-start gap-4 relative z-10">
+              <div className="bg-primary/15 p-3 rounded-xl backdrop-blur-sm border border-primary/20">
                 <Award className="w-6 h-6 text-primary" />
               </div>
               <div>
                 <h3 className="font-serif text-xl font-bold text-foreground mb-2">Education</h3>
-                <p className="text-muted-foreground text-sm">Currently pursuing B.E. in Computer Science Engineering while continuing my musical career.</p>
+                <p className="text-muted-foreground text-xs text-justify">Currently pursuing B.E. in Computer Science Engineering while continuing my musical career.</p>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Additional decorative squares */}
+        <div className="absolute left-0 top-1/2 -translate-y-1/2 w-32 h-32 bg-primary/5 rounded-2xl blur-2xl opacity-60"></div>
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-32 h-32 bg-primary/5 rounded-2xl blur-2xl opacity-60"></div>
       </div>
     </section>
   );
 };
-
 // Stats Component
 const Stats = () => {
   const navigate = useNavigate();
-  
+  const [isVisible, setIsVisible] = useState(false);
+  const [counts, setCounts] = useState({
+    concerts: 0,
+    years: 0,
+    awards: 0,
+    satisfaction: 0
+  });
+
+  const statsRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Start counting animations
+          animateCounts();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current);
+      }
+    };
+  }, []);
+
+  const animateCounts = () => {
+    // Animate each counter with different durations for effect
+    animateCounter(10, 'concerts', 2000);
+    animateCounter(11, 'years', 1500);
+    animateCounter(18, 'awards', 1800);
+    animateCounter(100, 'satisfaction', 2200);
+  };
+
+  const animateCounter = (target, key, duration) => {
+    const startTime = Date.now();
+    const startValue = 0;
+    
+    const updateCounter = () => {
+      const currentTime = Date.now();
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const currentValue = Math.floor(startValue + (target - startValue) * easeOutQuart);
+      
+      setCounts(prev => ({
+        ...prev,
+        [key]: currentValue
+      }));
+      
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      }
+    };
+    
+    requestAnimationFrame(updateCounter);
+  };
+
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section ref={statsRef} className="py-16 md:py-24 bg-background">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="font-serif text-4xl font-bold text-foreground md:text-5xl mb-4">
             11 Years of Excellence
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-xs max-w-2xl mx-auto">
             A journey marked by dedication, passion, and countless memorable performances
           </p>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="bg-card rounded-2xl p-6 text-center shadow-warm hover:shadow-elegant transition-all hover:scale-105">
-            <div className="text-4xl md:text-5xl font-bold text-primary font-serif">10K+</div>
+          <div className="bg-gradient-to-br from-card to-primary/5 rounded-2xl p-6 text-center border border-primary/20 hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+            {/* Background accent */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500 rounded-bl-2xl"></div>
+            <div className="text-4xl md:text-5xl font-bold text-primary font-serif">
+              {isVisible ? counts.concerts.toLocaleString() + 'K+' : '0+'}
+            </div>
             <div className="text-sm text-muted-foreground mt-2">Live Concerts</div>
           </div>
           
-          <div className="bg-card rounded-2xl p-6 text-center shadow-warm hover:shadow-elegant transition-all hover:scale-105">
-            <div className="text-4xl md:text-5xl font-bold text-primary font-serif">11</div>
+          <div className="bg-gradient-to-br from-card to-primary/5 rounded-2xl p-6 text-center border border-primary/20 hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+            {/* Background accent */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500 rounded-bl-2xl"></div>
+            <div className="text-4xl md:text-5xl font-bold text-primary font-serif">
+              {isVisible ? counts.years : '0'}
+            </div>
             <div className="text-sm text-muted-foreground mt-2">Years Experience</div>
           </div>
           
-          <div className="bg-card rounded-2xl p-6 text-center shadow-warm hover:shadow-elegant transition-all hover:scale-105">
-            <div className="text-4xl md:text-5xl font-bold text-primary font-serif">18</div>
+          <div className="bg-gradient-to-br from-card to-primary/5 rounded-2xl p-6 text-center border border-primary/20 hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+            {/* Background accent */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500 rounded-bl-2xl"></div>
+            <div className="text-4xl md:text-5xl font-bold text-primary font-serif">
+              {isVisible ? counts.awards : '0'}
+            </div>
             <div className="text-sm text-muted-foreground mt-2">Golden Awards</div>
           </div>
           
-          <div className="bg-card rounded-2xl p-6 text-center shadow-warm hover:shadow-elegant transition-all hover:scale-105">
-            <div className="text-4xl md:text-5xl font-bold text-primary font-serif">100%</div>
+          <div className="bg-gradient-to-br from-card to-primary/5 rounded-2xl p-6 text-center border border-primary/20 hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+            {/* Background accent */}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500 rounded-bl-2xl"></div>
+            <div className="text-4xl md:text-5xl font-bold text-primary font-serif">
+              {isVisible ? counts.satisfaction + '%' : '0%'}
+            </div>
             <div className="text-sm text-muted-foreground mt-2">Client Satisfaction</div>
           </div>
         </div>
@@ -411,31 +529,35 @@ const PerformanceTypes = () => {
       icon: Heart,
       title: 'Wedding Ceremonies',
       description: 'Create magical moments with soulful violin melodies during your wedding ceremony and special moments.',
+      category: 'Romantic',
     },
     {
       icon: Users,
       title: 'Receptions',
       description: 'Elevate your reception with elegant performances that guests will remember forever.',
+      category: 'Elegant',
     },
     {
       icon: Calendar,
       title: 'Birthday Celebrations',
       description: 'Add a musical touch to birthday celebrations with personalized performances.',
+      category: 'Joyful',
     },
     {
       icon: Sparkles,
       title: 'Corporate Events',
       description: 'Professional performances for corporate functions and cultural events.',
+      category: 'Professional',
     },
   ];
 
   return (
-    <section id="performances" className="py-16 md:py-24 animated-gold-bg bg-muted/30">
+    <section id="performances" className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-center font-serif text-4xl font-bold text-foreground md:text-5xl mb-4">
           Performance Services
         </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-xs text-muted-foreground mb-12 max-w-2xl mx-auto">
           Bringing elegance and emotion to every occasion
         </p>
 
@@ -445,13 +567,41 @@ const PerformanceTypes = () => {
             return (
               <div
                 key={index}
-                className="bg-card rounded-2xl p-6 shadow-warm hover:shadow-elegant transition-all hover:scale-105 border border-border"
+                data-aos="flip-up"
+                data-aos-delay={index * 200}
+                className="relative rounded-3xl p-6 shadow-elegant border-2 border-primary/20 dark:border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10 dark:from-primary/10 dark:to-primary/15 overflow-hidden group hover:scale-105 transition-transform duration-300"
               >
-                <div className="bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center mb-4">
-                  <IconComponent className="w-7 h-7 text-primary" />
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="p-3 rounded-xl bg-primary/10 dark:bg-primary/20 backdrop-blur-sm text-primary">
+                        <IconComponent className="h-8 w-8" />
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full text-primary bg-primary/10 dark:bg-primary/20 backdrop-blur-sm border border-primary/20">
+                        {perf.category}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <h3 className="font-serif text-xl font-bold text-foreground mb-3">
+                    {perf.title}
+                  </h3>
+                  
+                  <p className="text-muted-foreground text-xs text-justify leading-relaxed mb-4">
+                    {perf.description}
+                  </p>
+                  
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Music className="h-4 w-4" />
+                    <span>Live Performance</span>
+                  </div>
                 </div>
-                <h3 className="font-serif text-xl font-bold text-foreground mb-2">{perf.title}</h3>
-                <p className="text-sm text-muted-foreground">{perf.description}</p>
+                
+                {/* Animated background elements */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary to-transparent opacity-5 group-hover:opacity-10 transition-opacity duration-500" />
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary to-transparent opacity-5 group-hover:opacity-10 transition-opacity duration-500" />
               </div>
             );
           })}
@@ -647,22 +797,22 @@ const Contact = () => {
     {
       icon: Instagram,
       label: 'Instagram',
-      color: 'hover:bg-pink-500/20 hover:border-pink-500/30'
+      color: 'text-pink-600'
     },
     {
       icon: Facebook,
       label: 'Facebook',
-      color: 'hover:bg-blue-500/20 hover:border-blue-500/30'
+      color: 'text-blue-600'
     },
     {
       icon: Youtube,
       label: 'YouTube',
-      color: 'hover:bg-red-500/20 hover:border-red-500/30'
+      color: 'text-red-600'
     },
     {
       icon: SpotifyIcon,
       label: 'Spotify',
-      color: 'hover:bg-green-500/20 hover:border-green-500/30'
+      color: 'text-green-600'
     }
   ];
 
@@ -698,7 +848,7 @@ const Contact = () => {
               Magical Together
             </span>
           </h2>
-          <p className="text-md text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Ready to make your event unforgettable? Contact me to discuss your requirements 
             and get a customized performance package tailored to your special occasion.
           </p>
@@ -708,10 +858,10 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8" data-aos="fade-right">
             <div>
-              <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-6">
+              <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-2">
                 Contact Information
               </h3>
-              <p className="text-muted-foreground text-lg mb-8">
+              <p className="text-muted-foreground text-xs mb-8">
                 Feel free to reach out through any of these channels. I'm always happy to 
                 discuss your event and how we can make it truly special with beautiful music.
               </p>
@@ -724,17 +874,23 @@ const Contact = () => {
                 return (
                   <div
                     key={index}
-                    className="flex items-start gap-4 p-4 rounded-2xl bg-card/50 backdrop-blur-sm border border-border hover:shadow-elegant transition-all duration-300 hover:scale-105 group"
+                    className="relative rounded-2xl p-4 bg-gradient-to-br from-card to-primary/5 border-2 border-primary/20 overflow-hidden group hover:scale-105 transition-transform duration-300"
                     data-aos="fade-up"
                     data-aos-delay={index * 100}
                   >
-                    <div className="bg-primary/10 p-3 rounded-xl group-hover:bg-primary/20 transition-colors">
-                      <IconComponent className="w-6 h-6 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-muted-foreground mb-1">{item.label}</p>
-                      <p className="text-lg font-semibold text-foreground mb-1">{item.value}</p>
-                      <p className="text-xs text-muted-foreground">{item.description}</p>
+                    {/* Background accents */}
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500 rounded-bl-2xl"></div>
+                    <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-primary/5 to-transparent opacity-40 group-hover:opacity-70 transition-opacity duration-500 rounded-tr-2xl"></div>
+                    
+                    <div className="flex items-center gap-4 relative z-10">
+                      <div className="bg-primary/15 p-3 rounded-xl backdrop-blur-sm border border-primary/20">
+                        <IconComponent className="w-6 h-6 text-primary" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-medium text-muted-foreground">{item.label}</p>
+                        <p className="text-md font-semibold text-foreground">{item.value}</p>
+                        <p className="text-xs text-muted-foreground">{item.description}</p>
+                      </div>
                     </div>
                   </div>
                 );
@@ -750,11 +906,13 @@ const Contact = () => {
                   return (
                     <button
                       key={index}
-                      className={`p-4 bg-card rounded-xl border border-border ${social.color} transition-all duration-300 hover:scale-110 group`}
+                      className="relative rounded-xl p-3 bg-gradient-to-br from-card to-primary/5 border-2 border-primary/20 overflow-hidden group hover:scale-110 transition-all duration-300"
                       data-aos="zoom-in"
                       data-aos-delay={index * 100}
                     >
-                      <IconComponent className="w-5 h-5 text-foreground group-hover:scale-110 transition-transform" />
+                      {/* Background accent */}
+                      <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-bl from-primary/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500 rounded-bl-xl"></div>
+                      <IconComponent className={`w-5 h-5 ${social.color} group-hover:scale-110 transition-transform`} />
                     </button>
                   );
                 })}
@@ -763,11 +921,15 @@ const Contact = () => {
 
             {/* Quick Stats */}
             <div className="grid grid-cols-2 gap-4 mt-8">
-              <div className="text-center p-4 rounded-xl bg-primary/5 border border-primary/10">
+              <div className="relative rounded-xl p-4 bg-gradient-to-br from-primary/5 to-primary/10 border-2 border-primary/20 overflow-hidden group hover:scale-105 transition-transform duration-300 text-center">
+                {/* Background accent */}
+                <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-primary/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500 rounded-bl-xl"></div>
                 <div className="text-2xl font-bold text-primary font-serif">24h</div>
                 <div className="text-xs text-muted-foreground">Response Time</div>
               </div>
-              <div className="text-center p-4 rounded-xl bg-accent/5 border border-accent/10">
+              <div className="relative rounded-xl p-4 bg-gradient-to-br from-accent/5 to-accent/10 border-2 border-accent/20 overflow-hidden group hover:scale-105 transition-transform duration-300 text-center">
+                {/* Background accent */}
+                <div className="absolute top-0 right-0 w-12 h-12 bg-gradient-to-bl from-accent/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500 rounded-bl-xl"></div>
                 <div className="text-2xl font-bold text-accent font-serif">100%</div>
                 <div className="text-xs text-muted-foreground">Satisfaction</div>
               </div>
@@ -776,22 +938,26 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div 
-            className="bg-card/80 backdrop-blur-lg rounded-2xl px-6 py-8 shadow-elegant border border-border hover:shadow-2xl transition-all duration-500"
+            className="relative rounded-2xl p-4 bg-gradient-to-br from-card to-primary/5 border-2 border-primary/20 overflow-hidden group hover:scale-105 transition-transform duration-300"
             data-aos="fade-left"
           >
-            <div className="text-center mb-8">
+            {/* Background accents */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/10 to-transparent opacity-50 group-hover:opacity-80 transition-opacity duration-500 rounded-bl-2xl"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-primary/5 to-transparent opacity-40 group-hover:opacity-70 transition-opacity duration-500 rounded-tr-2xl"></div>
+            
+            <div className="text-center mb-8 relative z-10">
               <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Mail className="w-8 h-8 text-white" />
               </div>
               <h3 className="font-serif text-2xl font-bold text-foreground mb-2">
                 Send Your Inquiry
               </h3>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground text-xs">
                 Fill out the form below and I'll get back to you soon
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="block text-sm font-medium text-foreground">
@@ -804,7 +970,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full bg-background/50 border-border focus:border-primary transition-colors rounded-xl px-4 py-3"
+                    className="w-full placeholder:text-sm  bg-background/50 border-2 border-primary/20 focus:border-primary transition-colors rounded-xl px-4 py-3 hover:border-primary/50"
                     placeholder="Your full name"
                   />
                 </div>
@@ -819,7 +985,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-background/50 border-border focus:border-primary transition-colors rounded-xl px-4 py-3"
+                    className="w-full placeholder:text-sm  bg-background/50 border-2 border-primary/20 focus:border-primary transition-colors rounded-xl px-4 py-3 hover:border-primary/50"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -836,7 +1002,7 @@ const Contact = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full bg-background/50 border-border focus:border-primary transition-colors rounded-xl px-4 py-3"
+                    className="w-full placeholder:text-sm  bg-background/50 border-2 border-primary/20 focus:border-primary transition-colors rounded-xl px-4 py-3 hover:border-primary/50"
                     placeholder="+91 98765 43210"
                   />
                 </div>
@@ -851,7 +1017,7 @@ const Contact = () => {
                       value={formData.eventType}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-background/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all appearance-none cursor-pointer pr-12 group-hover:border-primary/50"
+                      className="w-full  placeholder:text-sm px-4 py-3 bg-background/50 border-2 border-primary/20 rounded-xl focus:outline-none focus:border-primary transition-all appearance-none cursor-pointer pr-12 group-hover:border-primary/50"
                     >
                       <option value="" className="text-muted-foreground">Select event type</option>
                       <option value="wedding" className="text-foreground py-2">Wedding Ceremony</option>
@@ -879,14 +1045,14 @@ const Contact = () => {
                     name="date"
                     value={formData.date}
                     onChange={handleChange}
-                    className="w-full bg-background/50 border-border focus:border-primary transition-colors rounded-xl px-4 py-3 appearance-none cursor-pointer pr-12 group-hover:border-primary/50 [color-scheme:dark]"
+                    className="w-full bg-background/50 border-2 border-primary/20 focus:border-primary transition-colors rounded-xl px-4 py-3 appearance-none cursor-pointer pr-12 group-hover:border-primary/50 [color-scheme:dark]"
                   />
                   <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none transition-transform group-hover:scale-110">
                     <Calendar className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                   </div>
                   {/* Custom date display overlay */}
                   {!formData.date && (
-                    <div className="absolute left-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-muted-foreground">
+                    <div className="absolute  placeholder:text-sm  left-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-muted-foreground">
                       Select event date
                     </div>
                   )}
@@ -915,7 +1081,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-background/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none placeholder:text-muted-foreground/60"
+                  className="w-full placeholder:text-sm px-4 py-3 bg-background/50 border-2 border-primary/20 rounded-xl focus:outline-none focus:border-primary transition-all resize-none placeholder:text-muted-foreground/60 hover:border-primary/50"
                   placeholder="Tell us about your event, preferred music, venue details, and any specific requirements you might have..."
                 />
               </div>
@@ -923,7 +1089,7 @@ const Contact = () => {
               <Button 
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-primary to-accent text-primary-foreground hover:from-primary/90 hover:to-accent/90 shadow-warm rounded-xl hover:scale-105 transition-all duration-300 py-4 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100 group"
+                className="w-full bg-gradient-to-r from-primary to-accent text-primary-foreground hover:from-primary/90 hover:to-accent/90 rounded-xl hover:scale-105 transition-all duration-300 py-4 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100 group border-0"
               >
                 {isSubmitting ? (
                   <div className="flex items-center gap-2">
@@ -938,7 +1104,7 @@ const Contact = () => {
                 )}
               </Button>
 
-              <p className="text-center text-sm text-muted-foreground">
+              <p className="text-center text-xs text-muted-foreground">
                 I typically respond within 2-4 hours during business days
               </p>
             </form>
@@ -1041,7 +1207,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-elegant-dark text-white py-12 relative">
+    <footer className="bg-elegant-dark text-white py-5 relative">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
@@ -1049,7 +1215,7 @@ const Footer = () => {
               <Music className="h-8 w-8 text-primary" />
               <span className="font-serif text-2xl font-bold">G. Sri Jagan</span>
             </div>
-            <p className="text-white/70 mb-4 max-w-md">
+            <p className="text-white/70 mb-4 text-sm max-w-md">
               Professional Violinist & Nadaswaram Artist bringing soulful melodies to your special occasions with over 10,000+ successful performances.
             </p>
             <div className="flex space-x-4">
@@ -1065,9 +1231,10 @@ const Footer = () => {
             </div>
           </div>
 
-          <div>
+        <div className='flex justify-between'>
+            <div>
             <h3 className="font-serif text-lg font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-xs">
               <li>
                 <button 
                   onClick={() => handleFooterNavigation('#home')}
@@ -1082,14 +1249,6 @@ const Footer = () => {
                   className="text-white/70 hover:text-white transition-colors text-left"
                 >
                   About
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => handleFooterNavigation('#performances')}
-                  className="text-white/70 hover:text-white transition-colors text-left"
-                >
-                  Performances
                 </button>
               </li>
               <li>
@@ -1113,7 +1272,7 @@ const Footer = () => {
 
           <div>
             <h3 className="font-serif text-lg font-bold mb-4">Contact Info</h3>
-            <ul className="space-y-2 text-white/70">
+            <ul className="space-y-2 text-xs text-white/70">
               <li className="flex items-center space-x-2">
                 <Phone className="h-4 w-4" />
                 <span>+91 98765 43210</span>
@@ -1128,6 +1287,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+        </div>
         </div>
 
         <div className="border-t border-white/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">

@@ -98,7 +98,7 @@ export default function Testimonials() {
       image: 'R',
       text: 'Outstanding performance at our reception! Sri Jagan\'s music created the perfect ambiance for our celebration. His professionalism, punctuality, and incredible talent made everything seamless. We received so many compliments from our guests!',
       date: 'February 2024',
-  },
+    },
     {
       name: 'Harini Subramanian',
       location: 'Trichy',
@@ -113,92 +113,92 @@ export default function Testimonials() {
   return (
     <Layout>
 
-    <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background">
 
 
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 animated-gold-bg">
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <div data-aos="fade-down">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 mb-6">
-              <Star className="w-5 h-5 text-primary fill-primary" />
-              <span className="text-primary font-semibold">10,000+ Happy Clients</span>
-            </div>
-            <h2 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
-              What Clients Say
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Read testimonials from families and organizations who experienced memorable performances
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Grid */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
-                className="bg-card rounded-2xl p-6 shadow-warm hover:shadow-elegant transition-all duration-300 border border-border hover:scale-105"
-              >
-                {/* <Quote className="h-8 w-8 text-primary/30 mb-4" /> */}
-                
-                {/* Rating */}
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-primary fill-primary" />
-                  ))}
-                </div>
-
-                {/* Testimonial Text */}
-                <p className="text-foreground/90 leading-relaxed text-sm mb-6">
-                  "{testimonial.text}"
-                </p>
-
-                {/* Client Info */}
-                <div className="flex items-center gap-3 pt-4 border-t border-border">
-                  <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                    <span className="text-primary font-semibold text-lg">{testimonial.image}</span>
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-semibold text-foreground">{testimonial.name}</p>
-                    <p className="text-xs text-muted-foreground">{testimonial.location}</p>
-                    <p className="text-xs text-primary font-medium mt-1">{testimonial.event}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-xs text-muted-foreground">{testimonial.date}</p>
-                  </div>
-                </div>
+        {/* Hero Section */}
+        <section className="py-16 md:py-24 animated-gold-bg">
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+            <div data-aos="fade-down">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 mb-6">
+                <Star className="w-5 h-5 text-primary fill-primary" />
+                <span className="text-primary font-semibold">10,000+ Happy Clients</span>
               </div>
-            ))}
+              <h2 className="font-serif text-4xl md:text-6xl font-bold text-foreground mb-6">
+                What Clients Say
+              </h2>
+              <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
+                Read testimonials from families and organizations who experienced memorable performances
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center" data-aos="zoom-in">
-          <h3 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Ready to Create Your Own Memorable Experience?
-          </h3>
-          <p className="text-muted-foreground mb-8">
-            Join thousands of satisfied clients who chose G. Sri Jagan for their special occasions
-          </p>
-          <Button
-            onClick={() => navigate('/')}
-            size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-warm hover:scale-105 transition-transform"
-          >
-            Book Your Performance
-          </Button>
-        </div>
-      </section>
+        {/* Testimonials Grid */}
+        <section className="py-16 bg-background">
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={index}
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                  className="bg-card rounded-2xl p-4 shadow-warm hover:shadow-elegant transition-all duration-300 border border-border hover:scale-105"
+                >
+                  {/* <Quote className="h-8 w-8 text-primary/30 mb-4" /> */}
 
-      <style>{`
+                  {/* Rating */}
+                  <div className="flex items-center gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 text-primary fill-primary" />
+                    ))}
+                  </div>
+
+                  {/* Testimonial Text */}
+                  <p className="text-foreground/90 leading-relaxed text-xs text-justify mb-6">
+                    "{testimonial.text}"
+                  </p>
+
+                  {/* Client Info */}
+                  <div className="flex items-center gap-3 pt-4 border-t border-border">
+                    <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary font-semibold text-lg">{testimonial.image}</span>
+                    </div>
+                    <div className='flex-1'>
+                      <p className="font-semibold text-foreground">{testimonial.name}</p>
+                      <p className="text-xs text-muted-foreground">{testimonial.location}</p>
+                      <div className="flex justify-between items-center">
+                        <p className="text-xs text-primary font-medium mt-1">{testimonial.event}</p>
+                        <p className="text-xs text-muted-foreground">{testimonial.date}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center" data-aos="zoom-in">
+            <h3 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Ready to Create Your Own Memorable Experience?
+            </h3>
+            <p className="text-muted-foreground text-sm mb-8">
+              Join thousands of satisfied clients who chose G. Sri Jagan for their special occasions
+            </p>
+            <Button
+              onClick={() => navigate('/')}
+              size="lg"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-warm hover:scale-105 transition-transform"
+            >
+              Book Your Performance
+            </Button>
+          </div>
+        </section>
+
+        <style>{`
         .animated-gold-bg {
           background: linear-gradient(
             135deg,
@@ -219,7 +219,7 @@ export default function Testimonials() {
           }
         }
       `}</style>
-    </div>
+      </div>
     </Layout>
   );
 }
