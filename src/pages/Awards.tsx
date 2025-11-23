@@ -30,7 +30,14 @@ const Awards = () => {
   });
 
   const statsRef = useRef(null);
-
+  // Add this useEffect to scroll to top on component mount
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, []);
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -263,14 +270,7 @@ const Awards = () => {
               Celebrating 18 golden awards that recognize a journey of passion, dedication, and musical excellence
             </p>
             
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-              <Button
-                onClick={() => navigate('/journey')}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all hover:scale-105 shadow-warm"
-              >
-                View My Journey
-              </Button>
-            </div>
+        
           </div>
 
           {/* Stats Section */}
@@ -430,8 +430,11 @@ const Awards = () => {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Users className="h-8 w-8" />
-                <span>Mentors: Karaikal Suka Pavalan & Nadaswaram S. Govindan</span>
+                <Users className="h-4 w-4" />
+                <div className='flex flex-col items-start'>
+                <span>Karaikal Suka Pavalan</span>
+                <span>Nadaswaram S. Govindan</span>
+                </div>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Heart className="h-4 w-4" />
@@ -440,25 +443,6 @@ const Awards = () => {
             </div>
           </div>
 
-          {/* CTA Section */}
-          <div 
-            data-aos="zoom-in"
-            data-aos-delay="400"
-            className="text-center mt-16"
-          >
-            <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Ready to Create Musical Magic?
-            </h3>
-            <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-              Book a performance for your special occasion and experience the award-winning talent firsthand.
-            </p>
-            <Button
-              onClick={() => navigate('/')}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 text-lg shadow-warm hover:scale-105 transition-transform"
-            >
-              Book a Performance
-            </Button>
-          </div>
         </div>
       </div>
     </Layout>

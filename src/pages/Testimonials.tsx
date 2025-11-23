@@ -16,7 +16,14 @@ export default function Testimonials() {
       easing: 'ease-out-cubic',
     });
   }, []);
-
+  // Add this useEffect to scroll to top on component mount
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, []);
   const testimonials = [
     {
       name: 'Priya & Rahul',

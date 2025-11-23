@@ -6,14 +6,33 @@
 All colors MUST be HSL.
 */
 /* Prevent horizontal overflow */
+/* Prevent scrollbar flash during AOS initialization */
+/* Fix for navbar extending issue */
+.min-h-screen {
+  overflow-x: hidden;
+}
+
+.animated-gold-bg {
+  overflow-x: hidden;
+}
+
+/* Ensure smooth rendering */
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
 
-/* Ensure all containers respect boundaries */
-.container {
-  max-width: 100%;
+body {
+  overflow-x: hidden;
+  width: 100%;
 }
 @layer base {
   :root {
@@ -183,7 +202,7 @@ html, body {
   background-blend-mode: overlay, overlay, overlay, overlay;
   position: relative;
   overflow: hidden;
-  animation: gradientPulse 3s ease-in-out infinite;
+  animation: gradientPulse 8s ease-in-out infinite;
 }
 
 /* Continuous shine effect - 3s loop */
@@ -203,7 +222,7 @@ html, body {
     transparent 100%
   );
   transform: skewX(-15deg);
-  animation: goldShine 3s ease-in-out infinite;
+  animation: goldShine 8s ease-in-out infinite;
 }
 
 /* Continuous particle effect - 3s loop */
@@ -301,83 +320,23 @@ html, body {
   }
 }
 /*-------------------------------------------------------------------------------------------------*/
-/* Journey Background Animation */
-/* Journey Background Animation */
+/* Journey Component Background Animation */
 .journey-animated-bg {
-  position: relative;
-  overflow: hidden;
-}
-
-.journey-animated-bg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    /* Base gradient */
-    linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--card)) 100%),
-    /* Gold shimmer layers - EXACTLY SAME AS HERO */
-    radial-gradient(circle at 15% 70%, rgba(251, 191, 36, 0.15) 0%, transparent 35%),
-    radial-gradient(circle at 85% 30%, rgba(245, 158, 11, 0.12) 0%, transparent 35%),
-    radial-gradient(circle at 50% 50%, rgba(252, 211, 77, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 70% 80%, rgba(251, 191, 36, 0.1) 0%, transparent 30%);
-  
-  background-blend-mode: overlay, overlay, overlay, overlay;
-  animation: gradientPulse 3s ease-in-out infinite;
-  z-index: 1;
-}
-
-/* Continuous shine effect - behind content - EXACTLY SAME AS HERO */
-.journey-animated-bg::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 150%;
-  height: 100%;
   background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 215, 0, 0.15) 25%,
-    rgba(255, 215, 0, 0.25) 50%,
-    rgba(255, 215, 0, 0.15) 75%,
-    transparent 100%
+    135deg,
+    hsl(var(--background)) 0%,
+    rgba(251, 191, 36, 0.05) 50%,
+    hsl(var(--background)) 100%
   );
-  transform: skewX(-15deg);
-  animation: goldShine 3s ease-in-out infinite;
-  z-index: 1;
+  background-size: 200% 200%;
+  animation: goldenShimmer 8s ease-in-out infinite;
 }
 
-/* Particle effect container - behind content - EXACTLY SAME AS HERO */
-.journey-particles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(circle at 20% 30%, rgba(252, 211, 77, 0.15) 2px, transparent 3px),
-    radial-gradient(circle at 80% 70%, rgba(251, 191, 36, 0.12) 1px, transparent 2px),
-    radial-gradient(circle at 40% 90%, rgba(245, 158, 11, 0.18) 3px, transparent 4px),
-    radial-gradient(circle at 60% 10%, rgba(252, 211, 77, 0.15) 2px, transparent 3px);
-  background-size: 200px 200px, 150px 150px, 180px 180px, 220px 220px;
-  animation: particleFloat 5s ease-in-out infinite;
-  opacity: 0.7;
-  z-index: 1;
-}
-
-/* Continuous glow effect - EXACTLY SAME AS HERO */
-.journey-animated-bg {
-  box-shadow: 
-    inset 0 0 60px rgba(251, 191, 36, 0.05),
-    0 0 40px rgba(251, 191, 36, 0.03);
-  animation: glowPulse 5s ease-in-out infinite;
-}
-
-/* Content wrapper - above animations */
-.journey-content {
-  position: relative;
-  z-index: 10;
+@keyframes goldenShimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }

@@ -16,16 +16,21 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      easing: "ease-out-cubic",
-      once: false,
-      mirror: true,
-      offset: 80,
-    });
-  }, []);
-
+useEffect(() => {
+  AOS.init({
+    duration: 1000,
+    once: true,
+    easing: 'ease-out-cubic',
+    offset: 120,
+    delay: 100, // Add small delay
+    mirror: false,
+  });
+  
+  // Refresh AOS after a short delay to ensure proper calculations
+  setTimeout(() => {
+    AOS.refresh();
+  }, 500);
+}, []);
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>

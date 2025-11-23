@@ -16,6 +16,7 @@ import gallery1 from '@/assets/gallery-1.jpg';
 import gallery2 from '@/assets/gallery-2.jpg';
 import gallery3 from '@/assets/gallery-3.jpg';
 import gallery4 from '@/assets/gallery-4.jpg';
+import logo from '@/assets/logo.png';
 
 // SVG Icons
 const SpotifyIcon = () => (
@@ -93,8 +94,8 @@ const Header = () => {
         }`}>
           <div className="flex h-14 items-center justify-between md:h-16 px-6">
             <div className="flex items-center space-x-2">
-              <Music className="h-8 w-8 text-primary" />
-              <span className="font-serif text-xl font-bold text-foreground md:text-2xl">Sri Jagan</span>
+              <img src={logo} alt="logo" className='w-auto h-11' />
+              {/* <span className="font-serif text-xl font-bold text-foreground md:text-2xl">Sri Jagan</span> */}
             </div>
 
             <nav className="hidden items-center space-x-8 md:flex">
@@ -164,8 +165,8 @@ const Header = () => {
                   }}
                   className="rounded-full bg-card p-4 shadow-warm border border-border hover:scale-110 transition-transform"
                 >
-                  <Sun className="h-7 w-7 text-yellow-500 dark:hidden" />
-                  <Moon className="h-7 w-7 text-indigo-400 hidden dark:block" />
+                  <Sun className="h-5 w-5 text-yellow-500 dark:hidden" />
+                  <Moon className="h-5 w-5 text-indigo-400 hidden dark:block" />
                 </button>
               </div>
             </div>
@@ -181,7 +182,7 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative animated-gold-bg w-full pt-24 pb-10 sm:pt-28 sm:pb-8 md:pt-32 md:pb-8">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="relative w-full h-[500px] overflow-hidden rounded-2xl shadow-elegant">
           <img
             src={heroImage1}
@@ -235,7 +236,7 @@ const About = () => {
   
   return (
     <section id="about" className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:items-center">
           <div>
             <h2 className="font-serif text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
@@ -300,7 +301,7 @@ const Journey = () => {
       <div className="absolute bottom-1/3 right-1/4 w-12 h-12 bg-primary/4 rounded-lg blur-md"></div>
       
       {/* Animated floating squares */}
-      <div className="absolute top-20 right-20 w-8 h-8 border-2 border-primary/20 rounded-lg animate-pulse"></div>
+      {/* <div className="absolute top-20 right-20 w-8 h-8 border-2 border-primary/20 rounded-lg animate-pulse"></div> */}
       <div className="absolute bottom-20 left-20 w-6 h-6 border-2 border-primary/15 rounded-lg animate-pulse delay-1000"></div>
       <div className="absolute top-1/3 right-1/4 w-4 h-4 bg-primary/10 rounded-sm animate-bounce"></div>
       <div className="absolute bottom-1/4 left-1/3 w-3 h-3 bg-primary/15 rounded-sm animate-ping"></div>
@@ -310,7 +311,7 @@ const Journey = () => {
       <div className="absolute -bottom-20 -right-20 w-48 h-48 bg-primary/2 rounded-3xl blur-2xl"></div>
 
       {/* Content wrapper with higher z-index */}
-      <div className="journey-content container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="journey-content container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 relative z-10">
         <h2 className="text-center font-serif text-4xl font-bold text-foreground md:text-5xl mb-12">
           My Musical Journey
         </h2>
@@ -385,6 +386,28 @@ const Journey = () => {
         <div className="absolute left-0 top-1/2 -translate-y-1/2 w-32 h-32 bg-primary/5 rounded-2xl blur-2xl opacity-60"></div>
         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-32 h-32 bg-primary/5 rounded-2xl blur-2xl opacity-60"></div>
       </div>
+
+      <style>{`
+        .journey-animated-bg {
+          background: linear-gradient(
+            135deg,
+            hsl(var(--background)) 0%,
+            rgba(251, 191, 36, 0.05) 50%,
+            hsl(var(--background)) 100%
+          );
+          background-size: 200% 200%;
+          animation: goldenShimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes goldenShimmer {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+      `}</style>
     </section>
   );
 };
@@ -460,7 +483,7 @@ const Stats = () => {
 
   return (
     <section ref={statsRef} className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="font-serif text-4xl font-bold text-foreground md:text-5xl mb-4">
             11 Years of Excellence
@@ -553,7 +576,7 @@ const PerformanceTypes = () => {
 
   return (
     <section id="performances" className="py-16 md:py-24 bg-muted/30">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <h2 className="text-center font-serif text-4xl font-bold text-foreground md:text-5xl mb-4">
           Performance Services
         </h2>
@@ -648,7 +671,7 @@ const Gallery = () => {
   return (
     <>
       <section id="gallery" className="py-16 md:py-24 bg-background overflow-hidden">
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           <h2 className="font-serif text-4xl font-bold text-foreground md:text-5xl mb-12">
             Performance Gallery
           </h2>
@@ -776,7 +799,7 @@ const Contact = () => {
     {
       icon: Phone,
       label: 'Phone',
-      value: '+91 98765 43210',
+      value: '+91 90424 56951',
       description: 'Available 9 AM - 9 PM'
     },
     {
@@ -835,7 +858,7 @@ const Contact = () => {
       <div className="absolute top-10 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
       
-      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto max-w-6xl px-5 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16" data-aos="fade-down">
           <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/20 mb-6">
@@ -1208,7 +1231,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-elegant-dark text-white py-5 relative">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
@@ -1275,7 +1298,7 @@ const Footer = () => {
             <ul className="space-y-2 text-xs text-white/70">
               <li className="flex items-center space-x-2">
                 <Phone className="h-4 w-4" />
-                <span>+91 98765 43210</span>
+                <span>+91 90424 56951</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
